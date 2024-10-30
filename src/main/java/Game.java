@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Game {
     private Screen screen;
     private Hero hero;
+    private Arena arena;
 
     public Game() {
         try {
@@ -32,12 +33,12 @@ public class Game {
             e.printStackTrace();
         }
 
-        hero = new Hero(10, 10);
+        arena = new Arena(40, 20);
     }
 
     private void draw() throws IOException {
         screen.clear();
-        hero.draw(screen);
+        arena.draw(screen);
         screen.refresh();
     }
 
@@ -56,17 +57,8 @@ public class Game {
     }
 
     private void processKey(KeyStroke key) {
-        System.out.println(key);
-        switch (key.getKeyType()) {
-            case KeyType.ArrowUp -> moveHero(hero.moveUp());
-            case KeyType.ArrowDown -> moveHero(hero.moveDown());
-            case KeyType.ArrowLeft -> moveHero(hero.moveLeft());
-            case KeyType.ArrowRight -> moveHero(hero.moveRight());
-        }
+        arena.processKey(key);
     }
 
-    private void moveHero(Position position) {
-        hero.setPosition(position);
-    }
 }
 

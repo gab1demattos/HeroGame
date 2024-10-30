@@ -5,8 +5,8 @@ public class Hero {
     private Position position;
     private Screen screen;
 
-    public Hero(int x, int y) {
-        position = new Position(x, y);
+    public Hero(Position position) {
+        this.position = position;
     }
 
     public int getX() {
@@ -46,7 +46,6 @@ public class Hero {
     }
 
     public void setPosition(Position position) {
-        setX(position.getX());
-        setY(position.getY());
+        this.position = position;
     }
 }
