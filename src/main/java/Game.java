@@ -19,7 +19,6 @@ public class Game {
             TerminalSize terminalSize = new TerminalSize(40, 20);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
 
-
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
 
