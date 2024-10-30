@@ -58,11 +58,15 @@ public class Game {
     private void processKey(KeyStroke key) {
         System.out.println(key);
         switch (key.getKeyType()) {
-            case KeyType.ArrowUp -> hero.moveUp();
-            case KeyType.ArrowDown -> hero.moveDown();
-            case KeyType.ArrowLeft -> hero.moveLeft();
-            case KeyType.ArrowRight -> hero.moveRight();
+            case KeyType.ArrowUp -> moveHero(hero.moveUp());
+            case KeyType.ArrowDown -> moveHero(hero.moveDown());
+            case KeyType.ArrowLeft -> moveHero(hero.moveLeft());
+            case KeyType.ArrowRight -> moveHero(hero.moveRight());
         }
+    }
+
+    private void moveHero(Position position) {
+        hero.setPosition(position);
     }
 }
 
