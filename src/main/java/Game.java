@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen;
-    private Hero hero;
     private Arena arena;
 
     public Game() {
@@ -38,7 +37,7 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        arena.draw(screen);
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
