@@ -118,19 +118,37 @@ public class Arena {
         for (Coin coin : coins) {
             if (hero.getPosition().equals(coin.getPosition())) {
                 coins.remove(coin);
-            break;
+                break;
             }
         }
     }
 
+    public boolean verifyCoinsEmpty() {
+        return coins.isEmpty();
+    }
+
     public boolean verifyMonsterCollisions() {
         for (Monster monster : monsters) {
-            if (monster.getPosition().equals(hero.getPosition())) {
-                System.out.println("Death.");
+            if (monster.getPosition().equals(hero.getPosition()))
                 return true;
-            }
         }
         return false;
+    }
+
+    public void displayMessageWin(TextGraphics graphics) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+        graphics.setForegroundColor(TextColor.Factory.fromString("#080404"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(getWidth()/2, getHeight()/2), "You won!!");
+    }
+
+    public void displayMessageDeath(TextGraphics graphics) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+        graphics.setForegroundColor(TextColor.Factory.fromString("#080404"));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(getWidth()/2, getHeight()/2), "You are dead.");
     }
 
 }

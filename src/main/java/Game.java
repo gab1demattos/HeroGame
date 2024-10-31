@@ -47,14 +47,22 @@ public class Game {
                 KeyStroke key = screen.readInput();
                 processKey(key);
                 if (arena.verifyMonsterCollisions()) {
-                    screen.close();
+                    arena.displayMessageDeath(screen.newTextGraphics());
+                    break;
+                }
+                if (arena.verifyCoinsEmpty()) {
+                    arena.displayMessageWin(screen.newTextGraphics());
                     break;
                 }
                 if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') screen.close();
                 if (key.getKeyType() == KeyType.EOF) break;
                 arena.moveMonsters();
                 if (arena.verifyMonsterCollisions()) {
-                    screen.close();
+                    arena.displayMessageDeath(screen.newTextGraphics());
+                    break;
+                }
+                if (arena.verifyCoinsEmpty()) {
+                    arena.displayMessageWin(screen.newTextGraphics());
                     break;
                 }
 
