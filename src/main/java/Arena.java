@@ -19,17 +19,18 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
-        this.hero = new Hero(new Position(10, 10));
+        this.hero = new Hero(10, 10);
         this.walls = createWalls();
     }
 
     public boolean canHeroMove(Position position) {
         for (Wall wall : walls) {
-            if (wall.getPosition() == position)
+            if (wall.getPosition().equals(position))
                 return false;
         }
         return (0 < position.getX() && position.getX() < width - 1) && (0 < position.getY() && position.getY() < height - 1);
     }
+
 
     private void moveHero(Position position) {
         if (canHeroMove(position))
